@@ -18,41 +18,6 @@ const userSchema = mongoose.Schema({
         type: String,
         require: [true, 'Which state do you live in?']
     },
-    /*
-    num_car: {
-        type: Number,
-        require: [true, 'Type your answer here']
-    },
-    num_carpool: {
-        type: Number,
-        require: [true, 'Type your answer here']
-    },
-    num_publlic_transport: {
-        type: Number,
-        require: [true, 'Type your answer here']
-    },
-    num_walk: {
-        type: Number,
-        require: [true, 'Type your answer here']
-    },
-
-    num_car_goal: {
-        type: Number,
-        require: [true, 'Type your answer here']
-    },
-    num_carpool_goal: {
-        type: Number,
-        require: [true, 'Type your answer here']
-    },
-    num_publlic_transport_goal: {
-        type: Number,
-        require: [true, 'Type your answer here']
-    },
-    num_walk_goal: {
-        type: Number,
-        require: [true, 'Type your answer here']
-    }
-    */
 }, {
     timestamps: true
 })

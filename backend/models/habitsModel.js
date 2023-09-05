@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 
 const habitsSchema = mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true,
+        ref: 'User'
+    },
     car: {
         type: Number,
         require: [true, 'Type your answer here']

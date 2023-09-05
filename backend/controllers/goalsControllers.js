@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const Goals = require('../models/goalsModel')
 
-// Register a new user
+// Set goals for a user
 const setGoals = asyncHandler(async (req, res) => {
     //res.status(200).json({message: 'Set my transport habits'})
 

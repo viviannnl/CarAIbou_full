@@ -2,6 +2,7 @@ const express = require('express')
 const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 // Register a new user
 const registerUser = asyncHandler(async (req, res) => {
@@ -38,7 +39,12 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new Error('Register user failed')
     }
 
-    res.status(200).json(user)
+    res.status(200).json({
+        name,
+        email,
+        location,
+        token: generateToken(user._id)
+    })
     
 })
 
@@ -64,15 +70,27 @@ const loginUser = asyncHandler(async (req, res) => {
         throw new Error('Wrong password')
     }
 
-    res.status(200).json(user)
+    res.status(200).json({
+        name: user.name,
+        email,
+        location: user.lacation,
+        token: generateToken(user._id)
+    })
 })
 
 // Display user info
 const getMe = asyncHandler(async (req, res) => {
-    res.status(200).json({message: 'Display user info.'})
+    //res.status(200).json({message: 'Display user info.'})
 
+    const user = await User.findById(req.user.id)
+
+    res.status(200).json(user)
 
 })
+
+const generateToken = (id) => {
+    return jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: '30d'})
+}
 
 module.exports = {
     registerUser,
