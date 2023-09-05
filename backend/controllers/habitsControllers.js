@@ -13,6 +13,7 @@ const setHabits = asyncHandler(async (req, res) => {
     }
 
     const habits = await Habits.create({
+        user: req.user.id,
         car,
         carpool,
         public,
@@ -27,4 +28,12 @@ const setHabits = asyncHandler(async (req, res) => {
     res.status(200).json(habits)
 })
 
-module.exports = {setHabits}
+// Get habits that user have set before
+const getHabits = asyncHandler(async (req, res) => {
+    //res.status(200).json({mssage: 'get the habits of user'})
+    const habits = await Habits.find({user: req.user.id})
+
+    res.status(200).json(habits)
+})
+
+module.exports = {setHabits, getHabits}

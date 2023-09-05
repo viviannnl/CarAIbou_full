@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const { setHabits } = require('../controllers/habitsControllers')
+const { setHabits, getHabits } = require('../controllers/habitsControllers')
+const { protect } = require('../middleware/authMiddleware')
 
-router.post('/', setHabits)
+router.post('/', protect, setHabits)
+router.get('/', protect, getHabits)
 
 module.exports = router

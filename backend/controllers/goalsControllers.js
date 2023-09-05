@@ -13,6 +13,7 @@ const setGoals = asyncHandler(async (req, res) => {
     }
 
     const goals = await Goals.create({
+        user: req.user.id,
         car_goal,
         carpool_goal,
         public_goal,
@@ -27,4 +28,11 @@ const setGoals = asyncHandler(async (req, res) => {
     res.status(200).json(goals)
 })
 
-module.exports = {setGoals}
+//Get the goals of user
+const getGoals = asyncHandler(async (req, res) => {
+    const goals = await Goals.find({user: req.user.id})
+
+    res.status(200).json(goals)
+})
+
+module.exports = { setGoals, getGoals }
