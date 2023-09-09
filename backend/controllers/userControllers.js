@@ -11,7 +11,21 @@ const registerUser = asyncHandler(async (req, res) => {
 
     if (!name || !email || !password || !location) {
         res.status(400)
-        throw new Error('Please fill in all fields')
+        
+        //throw new Error('Please fill in all fields')
+
+        if (!name) {
+            throw new Error('No name')
+        }
+        if (!email) {
+            throw new Error('No email')
+        }
+        if (!password) {
+            throw new Error('No password')
+        }
+        if (!location) {
+            throw new Error('No location')
+        }
     }
 
     //check if user exists

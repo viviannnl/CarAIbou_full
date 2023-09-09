@@ -1,8 +1,13 @@
 import {useState, useEffect} from 'react'
 import {FaUser} from 'react-icons/fa'
+import {useSelector, useDispatch} from 'react-redux'
+import { toast } from 'react-toastify'
+import { useNavigate } from "react-router-dom";
+import {register, reset} from '../features/auth/authSlice'
+
 
 function Register() {
-    const [formData, setFormData] = useState({
+    var [formData, setFormData] = useState({
         name: '',
         email: '',
         location: '',
@@ -10,17 +15,52 @@ function Register() {
         password2: '',
     })
 
-    const {name, email, location, password, password2} = formData
+    var {name, email, location, password, password2} = formData
+
+    const dispatch = useDispatch()
+    const {user, isLoading, isSuccess, isRejected, message} = useSelector(
+        (state) => state.auth
+    )
+    
+    const onChange = (e) => {
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value,
+            }))
+        }
 
     const onSubmit = (e) => {
         e.preventDefault()
+
+        // construct the user object and dispatch it
+        if (password !== password2) {
+            toast.error('Unmatched password')
+        } else {
+            const userData = {
+                name,
+                email,
+                password,
+                location
+            }
+            //console.log(userData ? userData : 'No user data')
+            dispatch(register(userData))
+        }
     }
-    const onChange = (e) => {
-        setFormData((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value,
-        }))
-    }
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (isRejected) {
+            toast.error(message)
+        }
+
+        if (isSuccess) {
+            navigate('/')
+            dispatch(reset())
+        }
+    }, [isSuccess, isRejected, message, navigate, dispatch])
+    
+
 
     return (<>
         <section className='heading'>

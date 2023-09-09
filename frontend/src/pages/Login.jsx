@@ -1,23 +1,54 @@
 import {useState, useEffect} from 'react'
 import {FaSignInAlt} from 'react-icons/fa'
+import {useSelector, useDispatch} from 'react-redux'
+import { toast } from 'react-toastify'
+import { useNavigate } from "react-router-dom";
+import {login, reset} from '../features/auth/authSlice'
 
 function Login() {
-    const [formData, setFormData] = useState({
+    var [formData, setFormData] = useState({
         email: '',
         password: '',
     })
 
-    const {email, password} = formData
+    var {email, password} = formData
+    const onChange = (e) => {
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value,
+            }))
+        }
+    
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    var {email, password} = formData
+    const {user, isLoading, isSuccess, isRejected, message} = useSelector(
+        (state) => state.auth
+    )
 
     const onSubmit = (e) => {
         e.preventDefault()
+
+        const userData = {
+            email,
+            password
+        }
+
+        dispatch(login(userData))
     }
-    const onChange = (e) => {
-        setFormData((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value,
-        }))
-    }
+
+    useEffect(() => {
+        if (isRejected) {
+            toast.error(message)
+        }
+
+        if (isSuccess) {
+            navigate('/')
+            dispatch(reset())
+        }
+    }, [isSuccess, isRejected, message, navigate, dispatch])
+
 
     return (<>
         <section className='heading'>
