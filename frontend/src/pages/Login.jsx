@@ -6,12 +6,16 @@ import { useNavigate } from "react-router-dom";
 import {login, reset} from '../features/auth/authSlice'
 
 function Login() {
+    
+    //dispatch(reset())
+
     var [formData, setFormData] = useState({
         email: '',
         password: '',
     })
 
     var {email, password} = formData
+
     const onChange = (e) => {
             setFormData((prevState) => ({
                 ...prevState,
@@ -23,6 +27,7 @@ function Login() {
     const navigate = useNavigate()
 
     var {email, password} = formData
+
     const {user, isLoading, isSuccess, isRejected, message} = useSelector(
         (state) => state.auth
     )
@@ -35,6 +40,8 @@ function Login() {
             password
         }
 
+        console.log(userData)
+
         dispatch(login(userData))
     }
 
@@ -44,8 +51,10 @@ function Login() {
         }
 
         if (isSuccess) {
+            
+            //dispatch(reset())
             navigate('/')
-            dispatch(reset())
+            
         }
     }, [isSuccess, isRejected, message, navigate, dispatch])
 

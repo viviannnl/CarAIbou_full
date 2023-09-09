@@ -5,9 +5,11 @@ const asyncHandler = require('express-async-handler')
 const protect = asyncHandler(async (req, res, next) => {
     let token
     // check if authorized
-    
+    //console.log('here')
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+        
         try {
+            
             // get the token from header
             token = req.headers.authorization.split(' ')[1] // format: bearer xxxx(token)
 

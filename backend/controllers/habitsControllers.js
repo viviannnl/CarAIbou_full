@@ -4,7 +4,7 @@ const Habits = require('../models/habitsModel')
 // Set habits for a user
 const setHabits = asyncHandler(async (req, res) => {
     //res.status(200).json({message: 'Set my transport habits'})
-
+    console.log(req.body)
     const {car, carpool, public, walk} = req.body
     
     if (!car || ! carpool || !public || !walk) {

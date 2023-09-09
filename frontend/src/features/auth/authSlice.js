@@ -79,6 +79,9 @@ export const authSlice = createSlice({
             state.message = action.payload
             state.user = null
         })
+        builder.addCase(logout.fulfilled, (state) => {
+            state.user = null
+        })
     }
 })
 

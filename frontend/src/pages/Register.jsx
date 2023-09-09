@@ -7,6 +7,9 @@ import {register, reset} from '../features/auth/authSlice'
 
 
 function Register() {
+    
+    //dispatch(reset())
+
     var [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -17,11 +20,12 @@ function Register() {
 
     var {name, email, location, password, password2} = formData
 
-    const dispatch = useDispatch()
+    
     const {user, isLoading, isSuccess, isRejected, message} = useSelector(
         (state) => state.auth
     )
-    
+    const dispatch = useDispatch()
+
     const onChange = (e) => {
             setFormData((prevState) => ({
                 ...prevState,
@@ -42,7 +46,7 @@ function Register() {
                 password,
                 location
             }
-            //console.log(userData ? userData : 'No user data')
+            console.log(userData ? userData : 'No user data')
             dispatch(register(userData))
         }
     }
@@ -55,8 +59,10 @@ function Register() {
         }
 
         if (isSuccess) {
-            navigate('/')
-            dispatch(reset())
+
+            //dispatch(reset())
+            navigate('/habits')
+            
         }
     }, [isSuccess, isRejected, message, navigate, dispatch])
     
