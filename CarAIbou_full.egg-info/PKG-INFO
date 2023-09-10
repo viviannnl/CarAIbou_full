@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: CarAIbou-full
+Version: 0.0.1
+Author: Vivian
+Author-email: viviannnlyr23@gmail.com
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: seaborn

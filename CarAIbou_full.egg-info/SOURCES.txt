@@ -1,0 +1,7 @@
+setup.py
+CarAIbou_full.egg-info/PKG-INFO
+CarAIbou_full.egg-info/SOURCES.txt
+CarAIbou_full.egg-info/dependency_links.txt
+CarAIbou_full.egg-info/requires.txt
+CarAIbou_full.egg-info/top_level.txt
+src/__init__.py
