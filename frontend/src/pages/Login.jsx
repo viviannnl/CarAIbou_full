@@ -3,7 +3,7 @@ import {FaSignInAlt} from 'react-icons/fa'
 import {useSelector, useDispatch} from 'react-redux'
 import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom";
-import {login, reset} from '../features/auth/authSlice'
+import {login, resetAuth} from '../features/auth/authSlice'
 
 function Login() {
     
@@ -52,7 +52,7 @@ function Login() {
 
         if (isSuccess) {
             
-            //dispatch(reset())
+            //dispatch(resetAuth())
             navigate('/')
             
         }

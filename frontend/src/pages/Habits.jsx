@@ -1,12 +1,12 @@
 import {useSelector, useDispatch} from 'react-redux'
 import {useState, useEffect} from 'react'
 import { useNavigate } from "react-router-dom";
-import {submitHabits, reset} from '../features/habits/habitsSlice'
+import {submitHabits, resetHabits} from '../features/habits/habitsSlice'
 
 function Habits() {
     
     const { user } = useSelector((state) => state.auth)
-    const name = JSON.parse(user).name
+    const name = user.name
     //const token = JSON.parse(user).token
     
 

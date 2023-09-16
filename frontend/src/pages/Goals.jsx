@@ -1,12 +1,13 @@
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {submitGoals} from '../features/goals/goalsSlice'
+import {submitGoals, getGoals} from '../features/goals/goalsSlice'
 import {useNavigate} from 'react-router-dom'
+//import sendData from '../features/ml/ml'
 
 function Goals() {
 
     const { user } = useSelector((state) => state.auth)
-    const name = JSON.parse(user)["name"]
+    const name = user.name
     //console.log(user.name)
 
     var [formData, setFormData] = useState({
@@ -39,15 +40,20 @@ function Goals() {
 
         //console.log(habitsData)
         dispatch(submitGoals(goalsData))
+
+        //dispatch(getGoals())
+        //console.log()
     }
 
-    const {goals, isLoading, isRejected, isSuccess, message} = useSelector((state) => (state.goals))
+    const {goals, isSuccess,} = useSelector((state) => (state.goals))
+    const {habits} = useSelector((state) => (state.habits))
     const navigate = useNavigate()
     useEffect(() => {
         if (isSuccess) {
             navigate('/')
+            //SendData(habits, goals)
         }
-    }, [isSuccess, navigate])
+    }, [isSuccess, goals, habits, navigate])
 
 
     return (<>

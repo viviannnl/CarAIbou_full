@@ -1,7 +1,9 @@
 import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
 import {Link, useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import {logout, reset} from '../features/auth/authSlice'
+import {logout, resetAuth} from '../features/auth/authSlice'
+import {resetGoals} from '../features/goals/goalsSlice'
+import { resetHabits} from '../features/habits/habitsSlice'
 
 function Header() {
 
@@ -11,7 +13,9 @@ function Header() {
 
     const onLogout = () => {
         dispatch(logout())
-        dispatch(reset())
+        dispatch(resetAuth())
+        dispatch(resetGoals())
+        dispatch(resetHabits())
         navigate('/')
     }
 
