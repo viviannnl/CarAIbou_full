@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom";
 import {register, reset} from '../features/auth/authSlice'
-import Spinner from '../components/Spinner'
+import Spinner from '../components/Spinner.jsx'
 
 
 function Register() {

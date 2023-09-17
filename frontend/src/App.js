@@ -5,7 +5,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Habits from './pages/Habits'
 import Goals from './pages/Goals'
-import Header from './components/Header'
+import Header from './components/Header.jsx';
 
 function App() {
   return (
