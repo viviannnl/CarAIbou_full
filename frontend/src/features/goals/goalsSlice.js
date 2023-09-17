@@ -16,7 +16,7 @@ export const submitGoals = createAsyncThunk ('goals/submit', async (goalsData, t
     try {
         
         const user = thunkAPI.getState().auth.user
-        const token = JSON.parse(user).token
+        const token = user.token
         //console.log(goalsData)
         
         return await goalsService.submitGoals(goalsData, token)
@@ -32,8 +32,8 @@ export const getGoals = createAsyncThunk ('goals/get', async (_,thunkAPI) => {
     try {
         
         const user = thunkAPI.getState().auth.user
-        const token = JSON.parse(user).token
-        //console.log(token)
+        const token = user.token
+        console.log(token)
         
         return await goalsService.getGoals(token)
     } catch(error) {

@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom";
 import {register, reset} from '../features/auth/authSlice'
+import Spinner from '../components/Spinner'
 
 
 function Register() {
@@ -65,10 +66,14 @@ function Register() {
             
         }
     }, [isSuccess, isRejected, message, navigate, dispatch])
+
+    if (isLoading) {
+        <Spinner />
+    }
     
 
 
-    return (<>
+    return (<div className='content'>
         <section className='heading'>
             <h1>
                 <FaUser /> Register
@@ -142,7 +147,7 @@ function Register() {
                 </div>
             </form>
         </section>
-    </>)
+    </div>)
 }
 
 export default Register

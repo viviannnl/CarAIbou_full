@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {submitGoals, getGoals} from '../features/goals/goalsSlice'
 import {useNavigate} from 'react-router-dom'
+import Spinner from '../components/Spinner'
 //import sendData from '../features/ml/ml'
 
 function Goals() {
@@ -45,20 +46,26 @@ function Goals() {
         //console.log()
     }
 
-    const {goals, isSuccess,} = useSelector((state) => (state.goals))
-    const {habits} = useSelector((state) => (state.habits))
+    const {goals, isSuccess, isLoading} = useSelector((state) => (state.goals))
+
     const navigate = useNavigate()
     useEffect(() => {
         if (isSuccess) {
             navigate('/')
             //SendData(habits, goals)
         }
-    }, [isSuccess, goals, habits, navigate])
+    }, [isSuccess, goals, navigate])
+
+    if (isLoading) {
+        <Spinner />
+    }
 
 
-    return (<>
+    return (<div className='content'>
         <h1>Hi {name},</h1>
         <h2>Please tell us how you want to change your habits</h2>
+        <p>Please type in your number of days going to work by car, carpooling, public transport and walking</p>
+
 
         <section className="form">
             <form onSubmit={onSubmit}>
@@ -117,7 +124,7 @@ function Goals() {
                 </div>
             </form>
         </section>
-    </>
+    </div>
     
     )
 }

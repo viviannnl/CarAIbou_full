@@ -2,6 +2,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {useState, useEffect} from 'react'
 import { useNavigate } from "react-router-dom";
 import {submitHabits, resetHabits} from '../features/habits/habitsSlice'
+import Spinner from '../components/Spinner'
 
 function Habits() {
     
@@ -48,7 +49,7 @@ function Habits() {
             walk: walk_day
         }
 
-        //console.log(habitsData)
+        console.log(habitsData)
         dispatch(submitHabits(habitsData))
 
     }
@@ -60,9 +61,14 @@ function Habits() {
         }
     }, [isSuccess, navigate])
 
-    return (<>
+    if (isLoading) {
+        <Spinner />
+    }
+
+    return (<div className='content'>
         <h1>Hi {name},</h1>
         <h2>Please tell us your transport habits</h2>
+        <p>Please type in your number of days going to work by car, carpooling, public transport and walking</p>
 
         <section className="form">
             <form onSubmit={onSubmit}>
@@ -123,7 +129,7 @@ function Habits() {
         </section>
         
 
-    </>
+    </div>
     
     )
 }
