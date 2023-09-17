@@ -47,7 +47,7 @@ function Register() {
                 password,
                 location
             }
-            console.log(userData ? userData : 'No user data')
+            //console.log(userData ? userData : 'No user data')
             dispatch(register(userData))
         }
     }

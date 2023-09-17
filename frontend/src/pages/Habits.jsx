@@ -49,7 +49,7 @@ function Habits() {
             walk: walk_day
         }
 
-        console.log(habitsData)
+        //console.log(habitsData)
         dispatch(submitHabits(habitsData))
 
     }

@@ -19,7 +19,7 @@ export const submitHabits = createAsyncThunk ('habits/submit', async (habitsData
         const user = thunkAPI.getState().auth.user
         const token = user.token
 
-        console.log(habitsData)
+        //console.log(habitsData)
         
         return await habitsService.submitHabits(habitsData, token)
     } catch(error) {

@@ -7,7 +7,7 @@ const API_URL = '/api/habits/'
 const submitHabits = async (habitsData, token) => {
     //const tokenData = JSON.parse(token)
     //console.log(`Bearer ${token}`)
-    console.log(habitsData)
+    //console.log(habitsData)
     const config = {
         headers: {Authorization: `Bearer ${token}`}
     }
