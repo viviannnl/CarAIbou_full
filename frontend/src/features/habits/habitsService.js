@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = '/api/habits/'
+const API_URL = process.env.SERVER_URL + '/api/habits/'
 
 
 // submit habits
