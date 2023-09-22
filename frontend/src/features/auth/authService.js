@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = process.env.SERVER_URL + '/api/users/'
+const API_URL = 'https://caraibou-demo-api.onrender.com/api/users/'
 
 // Register user
 const register = async (userData) => {
@@ -10,17 +10,21 @@ const register = async (userData) => {
     if(response.data) {
         localStorage.setItem('user', response.data)
     }
+    //console.log(typeof response.userData)
 
     return response.data
 }
 
 // Login user
 const login = async (userData) => {
+    console.log(API_URL)
     const response = await axios.post(API_URL + 'login', userData)
 
     if(response.data) {
         localStorage.setItem('user', JSON.stringify(response.data))
     }
+    console.log(JSON.stringify(response.data))
+
 
     return response.data
 }

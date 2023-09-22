@@ -4,7 +4,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {logout, resetAuth} from '../features/auth/authSlice'
 import {resetGoals} from '../features/goals/goalsSlice'
-import { resetHabits} from '../features/habits/habitsSlice'
+import { resetHabits } from '../features/habits/habitsSlice'
 
 function Header() {
 
@@ -44,8 +44,6 @@ function Header() {
                         </Link>
                     </li>
                 </>)}
-                
-                
             </ul>
         </header>
     )

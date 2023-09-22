@@ -127,10 +127,7 @@ function Habits() {
                 </div>
             </form>
         </section>
-        
-
-    </div>
-    
+    </div>  
     )
 }
 
