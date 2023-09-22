@@ -14,9 +14,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 app.use(
-    cors({
-      origin: ["http://localhost:3000", "https://CarAIbou-demo.onrender.com"],
-    })
+    cors()
 )
 
 app.use('/api/users', require('./routes/userRoutes'))
