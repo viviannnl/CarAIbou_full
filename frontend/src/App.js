@@ -5,14 +5,14 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Habits from './pages/Habits'
 import Goals from './pages/Goals'
-import Header from './components/Header.jsx';
+//import Header from './components/Header';
 
 function App() {
   return (
     <>
       <Router>
         <div className='container'>
-          <Header />
+          
           <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/login' element={<Login />} />
